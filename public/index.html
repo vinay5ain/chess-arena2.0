@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chess Arena</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/index.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <i class="fas fa-chess-knight"></i> Chess Arena <i class="fas fa-horse-head"></i>
+    </div>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul id="nav-links">
+        <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+        <li><a href="#blog"><i class="fas fa-pen-nib"></i> Blog</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><button class="join-btn" onclick="showLoginForm()"><i class="fas fa-user-plus"></i> Join</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1><i class="fas fa-chess-king"></i> Join the Ultimate Online Chess Arena <i class="fas fa-chess-king"></i></h1>
+    <p>Sharpen your skills, compete in tournaments, and enjoy thrilling battles — all in one arena.</p>
+  </section>
+
+  <section class="login-form" id="login-form">
+    <form onsubmit="return false;">
+      <h2>♞ Sign Up</h2>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required />
+      <div class="diagonal-buttons">
+        <button type="button" onclick="handleLogin('participant')">♙ Participant</button>
+        <button type="button" onclick="handleLogin('organizer')">♖ Organizer</button>
+      </div>
+    </form>
+  </section>
+
+  <main>
+    <section id="about">
+      <h2><i class="fas fa-chess-queen"></i> About</h2>
+      <p>
+        Welcome to <strong>Chess Arena</strong> — the future of online chess tournaments. We blend strategy and technology to help players and organizers manage events with ease. Real-time tracking, automatic matchmaking, knockout logic, and a beautiful UI await you.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2><i class="fas fa-chess-rook"></i> Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-random service-icon"></i>
+          <h3>Smart Matchmaking</h3>
+          <p>Automated round pairing & knockout handling — fair and efficient.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-user-circle service-icon"></i>
+          <h3>Player Dashboards</h3>
+          <p>Personalized stats, ongoing matches, and history at a glance.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-trophy service-icon"></i>
+          <h3>Leaderboard</h3>
+          <p>Live updates with medals for top scorers and consistent performers.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-calendar-alt service-icon"></i>
+          <h3>Match Scheduling</h3>
+          <p>Auto-scheduled rounds with live/upcoming/complete tracking.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-tools service-icon"></i>
+          <h3>Admin Panel</h3>
+          <p>Organizers can declare winners, manage rounds, and track progress.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-server service-icon"></i>
+          <h3>Robust Backend</h3>
+          <p>Built with Node.js & MongoDB — handles 1000+ players efficiently.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog">
+      <h2><i class="fas fa-chess-bishop"></i> Blog</h2>
+      <div class="blog-section">
+        <div class="blog-card">
+          <h3><i class="fas fa-lightbulb"></i> 3 Tips to Dominate Knockouts</h3>
+          <p>Knockouts aren't just about winning — they're about surviving. Learn how to prepare, adapt, and dominate.</p>
+        </div>
+        <div class="blog-card">
+          <h3><i class="fas fa-brain"></i> AI vs Human Players</h3>
+          <p>Explore how AI is reshaping chess strategies and what it means for your future matches.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2><i class="fas fa-chess-pawn"></i> Contact</h2>
+      <p>If you have queries, feedback, or want to collaborate — reach out through the form below!</p>
+      <div class="contact-form">
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLScy6Tg5DYXzbAQRxbnqTwhedIpsqEmwbioySHYL7D5mdDZbcA/viewform?usp=sf_link" 
+          width="100%" 
+          height="600" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>♙♘♖ &copy; 2025 Chess Arena. All rights reserved. ♔♕♚</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+
+    function showLoginForm() {
+      document.getElementById('login-form').classList.toggle('show');
+    }
+
+    function handleLogin(role) {
+      const email = document.getElementById('email').value.trim();
+      const name = document.getElementById('name').value.trim();
+
+      if (!email || !name || !email.includes('@')) {
+        alert('❌ Please enter a valid name and email.');
+        return;
+      }
+
+      if (role === 'participant') {
+        window.location.href = 'join.html';
+      } else if (role === 'organizer') {
+        window.location.href = 'create.html';
+      }
+    }
+  </script>
+</body>
+</html>
